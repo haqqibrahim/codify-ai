@@ -22,6 +22,7 @@ class EvaluateRequest(BaseModel):
     questions: List[str]
     correct_answers: List[str]
     user_answers: List[str]
+    metrics: List[str]
 
 
 class EvaluateResponse(BaseModel):
@@ -56,6 +57,9 @@ async def evaluate(request: EvaluateRequest):
     Evaluate quiz results.
     """
     evaluation_results = await evaluate_quiz(
-        request.questions, request.correct_answers, request.user_answers
+        request.questions,
+        request.correct_answers,
+        request.user_answers,
+        request.metrics,
     )
     return evaluation_results

@@ -34,6 +34,9 @@ class EvaluationInput(BaseModel):
         ..., description="Correct answers for each question"
     )
     user_answers: List[str] = Field(..., description="Answers provided by the student")
+    other_metrics: List[str] = Field(
+        ..., description="Any additional context or metrics for evaluation"
+    )
     metrics: List[str] = Field(
         ...,
         description="Evaluation metrics like accuracy, weak areas, strengths, suggestions",
@@ -91,7 +94,7 @@ async def generate_quiz(topic: str) -> Tuple[List[str], List[List[str]], List[st
 
 
 async def evaluate_quiz(
-    questions: List[str], correct_answers: List[str], user_answers: List[str]
+    questions: List[str], correct_answers: List[str], user_answers: List[str], other_metrics: List[str]
 ) -> dict:
     """
     Evaluate the quiz results and return a dictionary with evaluation metrics.
@@ -120,6 +123,7 @@ async def evaluate_quiz(
         questions=questions,
         correct_answers=correct_answers,
         user_answers=user_answers,
+        other_metrics=other_metrics,
         metrics=metrics,
     )
 
