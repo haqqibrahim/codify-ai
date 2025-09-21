@@ -1,0 +1,6 @@
+agno
+groq
+openai
+pydantic
+fastapi
+uvicorn
