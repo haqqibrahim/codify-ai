@@ -113,6 +113,10 @@ Evaluates user answers and provides structured feedback.
   "user_answers": [
      "A string",
      "def"
+  ],
+  "metrics":[
+    "response time per question: 20 secs",
+    "memory retention: 45%"
   ]
 }
 ```
